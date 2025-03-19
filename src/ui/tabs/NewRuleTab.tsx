@@ -11,15 +11,13 @@ import {
 import React, { useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 
-import { useStorage } from "@plasmohq/storage/dist/hook"
-
-import { useCurrentUrl } from "~ui/hooks/useCurrentUrl"
 import { useRules } from "~ui/hooks/useRules"
 import {ide} from "~types/ide";
+import {useOpenInIde} from "~ui/OpenInIDEContext";
 
 export const NewRuleTab = () => {
   const { add } = useRules()
-  const currentUrl = useCurrentUrl()
+  const {currentUrl} = useOpenInIde()
 
   const [IDE, setIDE] = useState<ide>(ide.intellij)
   const [from, setFrom] = useState("/")

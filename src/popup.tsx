@@ -3,8 +3,9 @@ import React from "react"
 
 import { darkTheme } from "~theme"
 import { TabPanel } from "~ui/components/TabPanel"
-import {NewRuleTab} from "~ui/tabs/NewRuleTab";
-import {RulesForHostTab} from "~ui/tabs/RulesForHostTab";
+import { OpenInIdeProvider } from "~ui/OpenInIDEContext"
+import { NewRuleTab } from "~ui/tabs/NewRuleTab"
+import { RulesForHostTab } from "~ui/tabs/RulesForHostTab"
 
 function IndexOptions() {
   const [tab, setTab] = React.useState(0)
@@ -13,8 +14,7 @@ function IndexOptions() {
   }
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
+    <OpenInIdeProvider>
       <Container sx={{ minWidth: "25em" }}>
         <Tabs value={tab} onChange={handleTabChange}>
           <Tab label="Add rule" />
@@ -22,13 +22,13 @@ function IndexOptions() {
           <Tab label="All rules" />
         </Tabs>
         <TabPanel index={0} value={tab}>
-          <NewRuleTab/>
+          <NewRuleTab />
         </TabPanel>
         <TabPanel index={1} value={tab}>
-          <RulesForHostTab/>
+          <RulesForHostTab />
         </TabPanel>
       </Container>
-    </ThemeProvider>
+    </OpenInIdeProvider>
   )
 }
 
