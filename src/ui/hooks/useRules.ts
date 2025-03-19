@@ -11,16 +11,16 @@ export const useRules = () => {
   )
 
   const add = (rule: Rule) => {
-    setRules((rules) => [...rules, rule])
+    return setRules((rules) => [...rules, rule])
   }
 
   const remove = (rule: Rule) => {
-    setRules((rules) => [...rules.filter(it=>it.id !== rule.id)])
+    return setRules((rules) => [...rules.filter(it=>it.id !== rule.id)])
   }
 
   const set = (rule: Rule) => {
     console.log("setting rule", rule)
-    setRules((rules) => [...rules.filter(it=>it.id !== rule.id), rule])
+    return setRules((rules) => [...rules.filter(it=>it.id !== rule.id), rule])
   }
 
   return {

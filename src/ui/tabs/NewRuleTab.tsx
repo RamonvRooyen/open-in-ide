@@ -17,7 +17,7 @@ import {useOpenInIde} from "~ui/OpenInIDEContext";
 
 export const NewRuleTab = () => {
   const { add } = useRules()
-  const {currentUrl} = useOpenInIde()
+  const {currentUrl, setTab} = useOpenInIde()
 
   const [IDE, setIDE] = useState<ide>(ide.intellij)
   const [from, setFrom] = useState("/")
@@ -30,6 +30,8 @@ export const NewRuleTab = () => {
       id: uuidv4(),
       ide: IDE,
       rewrite: { from, to }
+    }).then(()=>{
+      setTab(1)
     })
   }
 
@@ -48,7 +50,6 @@ export const NewRuleTab = () => {
           </MenuItem>
         </Select>
       </FormControl>
-      <Typography variant="caption">Host: {currentUrl.host}</Typography>
       <TextField label="from" value={from} onChange={(e)=>setFrom(e.target.value)} />
       <TextField label="to" value={to} onChange={(e)=>setTo(e.target.value)} />
       <Button variant="contained" onClick={handleAddRule}>Add rule</Button>
