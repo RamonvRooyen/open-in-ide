@@ -51,8 +51,8 @@ export const NewRuleTab = () => {
         </Select>
       </FormControl>
       <Typography variant="caption">Host: {currentUrl.host}</Typography>
-      <TextField label="from" defaultValue={"/"} />
-      <TextField label="to" defaultValue={"/src"} />
+      <TextField label="from" value={from} onChange={(e)=>setFrom(e.target.value)} />
+      <TextField label="to" value={to} onChange={(e)=>setTo(e.target.value)} />
       <Button variant="contained" onClick={handleAddRule}>Add rule</Button>
     </Stack>
   )

@@ -21,7 +21,7 @@ import { useCurrentUrl } from "~ui/hooks/useCurrentUrl"
 import { useRules } from "~ui/hooks/useRules"
 
 export const RulesForHostTab = () => {
-  const { rules } = useRules()
+  const { rules, set } = useRules()
   const url = useCurrentUrl()
 
   const ruleRows = useMemo(
@@ -30,7 +30,7 @@ export const RulesForHostTab = () => {
       <TableCell>{rule.ide}</TableCell>
       <TableCell>{rule.rewrite.from}</TableCell>
       <TableCell>{rule.rewrite.to}</TableCell>
-      <TableCell><Switch size="small" value={rule.enabled}/></TableCell>
+      <TableCell><Switch size="small" defaultChecked={rule.enabled} checked={rule.enabled} onChange={(e, checked)=>set({...rule, enabled: checked})}/></TableCell>
     </TableRow>),
     [rules]
   )
